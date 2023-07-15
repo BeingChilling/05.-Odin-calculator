@@ -67,19 +67,51 @@ const toevoegNummer = function (num) {
   }
 };
 
+// const toevoegOperatie = function (operatie) {
+//   if (!num2) {
+//     num1 = parseFloat(scherm.innerText);
+//     operatieVar = operatie;
+//   }
+//   if (num1 && num2) {
+//     num2 = parseFloat(scherm.innerText);
+//     opereren(num1, operatieVar, num2);
+//     resultaat = parseFloat(resultaat.toFixed(10));
+//     num1 = resultaat;
+//     num2 = "";
+//     operatieVar = operatie;
+//     scherm.innerText = resultaat;
+//   }
+// };
+
 const toevoegOperatie = function (operatie) {
   if (!num2) {
     num1 = parseFloat(scherm.innerText);
     operatieVar = operatie;
   }
-  if (num1 && num2) {
-    num2 = parseFloat(scherm.innerText);
-    opereren(num1, operatieVar, num2);
-    resultaat = parseFloat(resultaat.toFixed(10));
-    num1 = resultaat;
-    num2 = "";
-    operatieVar = operatie;
-    scherm.innerText = resultaat;
+  if (operatie === "+" || operatie === "-") {
+    if (num1 && num2) {
+      num2 = parseFloat(scherm.innerText);
+      opereren(num1, operatieVar, num2);
+      num1 = resultaat;
+      num2 = "";
+      operatieVar = operatie;
+      scherm.innerText = resultaat;
+    } else {
+      operatieVar = operatie;
+    }
+  } else if (operatie === "*" || operatie === "/") {
+    if (num1 && num2) {
+      num2 = parseFloat(scherm.innerText);
+      opereren(num1, operatieVar, num2);
+      num1 = resultaat;
+      num2 = "";
+      operatieVar = operatie;
+      scherm.innerText = resultaat;
+    } else {
+      num1 = parseFloat(scherm.innerText);
+      operatieVar = operatie;
+      scherm.innerText = "";
+    }
   }
 };
 
